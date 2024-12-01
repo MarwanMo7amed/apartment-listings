@@ -60,10 +60,6 @@ class ApartmentService {
       const apartmenrDetails = await ApartmentModel.findById(id)
         .populate("developerId")
         .exec();
-      console.log(
-        "--------------------------------------------\n" +
-          JSON.stringify(apartmenrDetails)
-      );
       if (!apartmenrDetails)
         throw new AppErrorResponse(
           "aparmtnets details currently not available",

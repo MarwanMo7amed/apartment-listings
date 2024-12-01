@@ -6,6 +6,7 @@ import connectToDatabase from './src/config/db';
 import { errorHandler } from './src/api/middleware/errorHandler';
 import developerRouter from './src/api/router/developer.router';
 import { swaggerUi,swaggerSpec } from './swagger';
+import requestLogger from './src/api/middleware/requestLogger';
 import "reflect-metadata";
 
 const cors = require('cors');
@@ -16,6 +17,7 @@ app.use(cors());
 const PORT = process.env.PORT || 5000; 
 
 app.use(express.json());
+app.use(requestLogger);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
