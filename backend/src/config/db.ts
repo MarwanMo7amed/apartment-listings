@@ -6,7 +6,8 @@ dotenv.config();  // Load environment variables
 
 const connectToDatabase = async () => {
   try {
-    const dbURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/apartment_app';  // MongoDB URI from .env file
+    dotenv.config()
+    const dbURI = process.env.MONGODB_URI;
     if (!dbURI) {
       throw new Error('MONGODB_URI is not defined in the environment variables');
     }
